@@ -41,8 +41,13 @@ jobs:
             - name: 'Docker image tag'
               run: |
                 echo "Current tag for deploy is: ${{ env.image_tag }}"
-    
-    
+                
+            - name: Set output for image tag
+              id: set_output
+              run: |
+                echo "image_tag=${IMAGE_TAG}" >> $GITHUB_ENV
+                echo "image_tag=${IMAGE_TAG}" >> $GITHUB_OUTPUT
+        
     
     build_functions:
       runs-on: ubuntu-latest
