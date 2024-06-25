@@ -48,4 +48,27 @@ jobs:
                 echo "Current workspace for deploy: ${{ inputs.workspace }}"
 
 
+    build_functions:
+        needs: infra
+        runs-on: ubuntu-latest
+        steps:
+            - name: 'Checkout Code'
+              uses: actions/checkout@v4
+
+            - name: 'Current workspace for building functions'
+              run: |
+                echo "Current workspace for build: ${{ inputs.workspace }}"
+
+    deploy_functions:
+        needs: build_project
+        runs-on: ubuntu-latest
+        steps:
+            - name: 'Checkout Code'
+              uses: actions/checkout@v4
+
+            - name: 'Current workspace for deploy functions'
+              run: |
+                echo "Current workspace for deploy functions: ${{ inputs.workspace }}"
+
+
     
