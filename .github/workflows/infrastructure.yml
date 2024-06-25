@@ -14,10 +14,21 @@ env:
 
 
 jobs:
-  terraform:
+  deploy_dev:
     name: 'Terraform Deploy'
     runs-on: ubuntu-latest
     environment: dev
+  
+    steps:
+      - name: 'Checkout GitHub Actions'
+        uses: actions/checkout@v4
+
+
+  deploy_prod:
+    name: 'Terraform Deploy'
+    runs-on: ubuntu-latest
+    environment: prod
+    needs: deploy_dev
   
     steps:
       - name: 'Checkout GitHub Actions'
