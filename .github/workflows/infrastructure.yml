@@ -12,7 +12,16 @@ env:
   twitposter_image: 'ghcr.io/wallyrion/twitposter:latest'
 
 jobs:
+  build_artifacts:
+    name: Build artifacts
+    uses: ./.github/workflows/build.yml
+    with:
+      workspace: dev
+    secrets: inherit
+    
+  
   deploy_dev:
+    needs: build_artifacts
     name: Deploy to Dev
     uses: ./.github/workflows/shared.yml
     with:

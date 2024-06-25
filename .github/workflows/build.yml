@@ -1,0 +1,39 @@
+name: Build
+on:
+    workflow_call:
+      inputs:
+        workspace:
+            description: 'The Terraform workspace'
+            required: true
+            type: string
+
+
+jobs:
+    build_project:
+        runs-on: ubuntu-latest
+        steps:
+            - name: 'Checkout Code'
+              uses: actions/checkout@v4
+
+            - name: 'Current workspace for build'
+              run: |
+                echo "Current workspace for build: ${{ inputs.workspace }}"
+                
+            - name: Upload Artifact
+              id: upload-artifact
+              uses: actions/upload-artifact@v2
+              with:
+                name: my-artifact
+                path: . 
+          
+
+    build_functions:
+      runs-on: ubuntu-latest
+      steps:
+        - name: 'Checkout Code'
+          uses: actions/checkout@v4
+
+        - name: 'Current workspace for building functions'
+          run: |
+            echo "Current workspace for build: ${{ inputs.workspace }}"
+    
