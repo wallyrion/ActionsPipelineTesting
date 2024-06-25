@@ -43,7 +43,7 @@ jobs:
                 
             - name: 'Docker image tag'
               run: |
-                echo "Current tag for deploy is: ${{ env.IMAGE_TAG }}"
+                echo "Current tag for deploy is: ${{   }}"
             
             
             - name: Download Artifact

@@ -37,8 +37,13 @@ jobs:
               run: |
                 IMAGE_TAG=${{ github.sha }}
                 echo "image_tag=${IMAGE_TAG}" >> $GITHUB_ENV
-          
-
+                
+            - name: 'Docker image tag'
+              run: |
+                echo "Current tag for deploy is: ${{ env.image_tag }}"
+    
+    
+    
     build_functions:
       runs-on: ubuntu-latest
       steps:
