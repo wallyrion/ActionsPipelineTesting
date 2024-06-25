@@ -27,7 +27,7 @@ jobs:
     with:
       environment: dev
       workspace: dev
-      image_tag: ${{ needs.build_artifacts.outputs.image_tag }}
+      image_tag: 3123
     secrets: inherit
   
   deploy_prod:
