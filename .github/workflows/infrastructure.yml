@@ -21,11 +21,21 @@ jobs:
       - name: 'Checkout GitHub Actions'
         uses: actions/checkout@v4
 
+  deploy_stage:
+    name: 'Terraform Deploy stage'
+    runs-on: ubuntu-latest
+    environment: stage
+    needs: deploy_dev
+  
+    steps:
+      - name: 'Checkout GitHub Actions'
+        uses: actions/checkout@v4
+
   deploy_prod:
     name: 'Terraform Deploy prod'
     runs-on: ubuntu-latest
     environment: prod
-    needs: deploy_dev
+    needs: deploy_stage
   
     steps:
       - name: 'Checkout GitHub Actions'
