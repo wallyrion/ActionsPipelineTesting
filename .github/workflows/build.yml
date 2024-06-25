@@ -34,7 +34,6 @@ jobs:
               id: tag_image
               run: |
                 IMAGE_TAG=${{ github.sha }}
-                docker tag ${{ env.registry }}/${{ env.image_name }}:latest ${{ env.registry }}/${{ env.image_name }}:${IMAGE_TAG}
                 echo "::set-output name=image_tag::${IMAGE_TAG}"
           
 
