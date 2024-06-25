@@ -16,7 +16,7 @@ jobs:
     build_project:
         runs-on: ubuntu-latest
         outputs:
-          image_tag: ${{ steps.tag_image.outputs.image_tag }}
+          image_tag: ${{ env.image_tag }}
         steps:
             - name: 'Checkout Code'
               uses: actions/checkout@v4
