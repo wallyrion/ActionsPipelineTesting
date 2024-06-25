@@ -11,6 +11,11 @@ on:
             description: 'The Terraform workspace'
             required: true
             type: string
+            
+        image_tag:
+          description: 'The Docker image tag to deploy'
+          required: false
+          type: string
 
 permissions:
   contents: 'read'
