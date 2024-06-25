@@ -3,13 +3,6 @@ name: terraform
 on:
   push:
     branches: ["main"]
-  workflow_dispatch:
-    inputs:
-      approve:
-        description: 'Approve deployment to production'
-        required: false
-        default: false
-        type: boolean
 
 permissions:
   contents: 'read'
@@ -33,7 +26,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: prod
     needs: deploy_dev
-    if: ${{ github.event.inputs.approve == 'true' }}
   
     steps:
       - name: 'Checkout GitHub Actions'
