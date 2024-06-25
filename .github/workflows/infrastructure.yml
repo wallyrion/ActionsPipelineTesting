@@ -12,7 +12,6 @@ permissions:
 env:
   twitposter_image: 'ghcr.io/wallyrion/twitposter:latest'
 
-
 jobs:
   deploy_dev:
     name: 'Terraform Deploy dev'
