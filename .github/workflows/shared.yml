@@ -33,7 +33,6 @@ jobs:
         steps:
             - name: 'Checkout Code'
               uses: actions/checkout@v4
-1
             - name: 'Current workspace for deploy'
               run: |
                 echo "Current workspace for deploy: ${{ inputs.workspace }}"
