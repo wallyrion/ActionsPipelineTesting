@@ -15,10 +15,20 @@ env:
 
 
 jobs:
-  deploy:
-    name: 'deploy'
+  deploy_dev:
+    name: 'deploy dev'
     runs-on: ubuntu-latest
     environment: dev
+  
+    steps:
+      - name: 'Checkout GitHub Actions'
+        uses: actions/checkout@v4
+
+
+  deploy_prod:
+    name: 'deploy prod'
+    runs-on: ubuntu-latest
+    environment: prod
   
     steps:
       - name: 'Checkout GitHub Actions'
