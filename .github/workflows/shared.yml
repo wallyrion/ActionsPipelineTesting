@@ -25,7 +25,7 @@ jobs:
                 echo "Current Workspace: ${{ inputs.workspace }}"
 
 
-    build:
+    build_project:
         needs: infra
         runs-on: ubuntu-latest
         steps:
@@ -35,4 +35,17 @@ jobs:
             - name: 'Current workspace for build'
               run: |
                 echo "Current workspace for build: ${{ inputs.workspace }}"
+
+    deploy_project:
+        needs: build_project
+        runs-on: ubuntu-latest
+        steps:
+            - name: 'Checkout Code'
+              uses: actions/checkout@v4
+
+            - name: 'Current workspace for deploy'
+              run: |
+                echo "Current workspace for deploy: ${{ inputs.workspace }}"
+
+
     
