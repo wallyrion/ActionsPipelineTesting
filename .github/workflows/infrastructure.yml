@@ -28,6 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: prod
     needs: deploy_dev
+    if: ${{ github.event.inputs.approve == 'true' }}
   
     steps:
       - name: 'Checkout GitHub Actions'
