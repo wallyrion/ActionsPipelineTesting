@@ -14,22 +14,34 @@ on:
 
 
 jobs:
+    infra:
+      environment: ${{ inputs.workspace }}
+      runs-on: ubuntu-latest
+      steps:
+        - name: 'Checkout Code'
+          uses: actions/checkout@v4
+  
+        - name: 'Print Current Workspace'
+          run: |
+            echo "Current Workspace: ${{ inputs.workspace }}"
+  
+  
     deploy_project:
+        needs: infra 
         environment: ${{ inputs.workspace }}
-        needs: build_project
         runs-on: ubuntu-latest
         steps:
             - name: 'Checkout Code'
               uses: actions/checkout@v4
-
+1
             - name: 'Current workspace for deploy'
               run: |
                 echo "Current workspace for deploy: ${{ inputs.workspace }}"
 
 
     deploy_functions:
+        needs: infra
         environment: ${{ inputs.workspace }}
-        needs: build_functions
         runs-on: ubuntu-latest
         steps:
             - name: 'Checkout Code'
@@ -38,15 +50,6 @@ jobs:
             - name: 'Current workspace for deploy functions'
               run: |
                 echo "Current workspace for deploy functions: ${{ inputs.workspace }}"
-    infra:
-      environment: ${{ inputs.workspace }}
-      runs-on: ubuntu-latest
-      steps:
-        - name: 'Checkout Code'
-          uses: actions/checkout@v4
-
-        - name: 'Print Current Workspace'
-          run: |
-            echo "Current Workspace: ${{ inputs.workspace }}"
+    
 
     
