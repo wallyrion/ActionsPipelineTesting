@@ -13,30 +13,17 @@ env:
 
 jobs:
   deploy_dev:
-    name: 'Terraform Deploy dev'
-    runs-on: ubuntu-latest
-    environment: dev
+    name: Deploy to Dev
+    uses: ./.github/workflows/shared.yml
+    with:
+      environment: dev
+      workspace: dev
+    secrets: inherit
   
-    steps:
-      - name: 'Checkout GitHub Actions'
-        uses: actions/checkout@v4
-
-  deploy_stage:
-    name: 'Terraform Deploy stage'
-    runs-on: ubuntu-latest
-    environment: stage
-    needs: deploy_dev
-  
-    steps:
-      - name: 'Checkout GitHub Actions'
-        uses: actions/checkout@v4
-
   deploy_prod:
-    name: 'Terraform Deploy prod'
-    runs-on: ubuntu-latest
-    environment: prod
-    needs: deploy_stage
-  
-    steps:
-      - name: 'Checkout GitHub Actions'
-        uses: actions/checkout@v4
+    name: Deploy to prod
+    uses: ./.github/workflows/shared.yml
+    with:
+        environment: prod
+        workspace: prod
+    secrets: inherit
