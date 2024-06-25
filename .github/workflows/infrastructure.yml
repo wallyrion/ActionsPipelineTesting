@@ -21,6 +21,7 @@ jobs:
     secrets: inherit
   
   deploy_prod:
+    needs: deploy_dev
     name: Deploy to prod
     uses: ./.github/workflows/shared.yml
     with:
