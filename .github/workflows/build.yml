@@ -6,6 +6,10 @@ on:
             description: 'The Terraform workspace'
             required: true
             type: string
+      outputs:
+        image_tag:
+          description: 'The Docker image tag'
+          value: ${{ jobs.build_project.outputs.image_tag }}
 
 permissions:
   contents: 'read'
