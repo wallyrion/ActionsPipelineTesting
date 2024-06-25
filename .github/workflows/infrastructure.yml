@@ -1,0 +1,24 @@
+name: terraform
+
+on:
+  push:
+    branches: ["master"]
+  workflow_dispatch:
+
+permissions:
+  contents: 'read'
+  packages: 'write'
+
+env:
+  twitposter_image: 'ghcr.io/wallyrion/twitposter:latest'
+
+
+jobs:
+  terraform:
+    name: 'Terraform Deploy'
+    runs-on: ubuntu-latest
+    environment: dev
+  
+    steps:
+      - name: 'Checkout GitHub Actions'
+        uses: actions/checkout@v4

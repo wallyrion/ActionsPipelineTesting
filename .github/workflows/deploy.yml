@@ -1,0 +1,25 @@
+name: deploy
+
+on:
+  workflow_run:
+    workflows: ["terraform"]
+    types:
+      - completed
+
+permissions:
+  contents: 'read'
+  packages: 'write'
+
+env:
+  twitposter_image: 'ghcr.io/wallyrion/twitposter:latest'
+
+
+jobs:
+  deploy:
+    name: 'deploy'
+    runs-on: ubuntu-latest
+    environment: dev
+  
+    steps:
+      - name: 'Checkout GitHub Actions'
+        uses: actions/checkout@v4
