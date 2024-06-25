@@ -41,6 +41,11 @@ jobs:
               run: |
                 echo "Current workspace for deploy: ${{ inputs.workspace }}"
                 
+            - name: 'Docker image tag'
+              run: |
+                echo "Current tag for deploy is: ${{ env.IMAGE_TAG }}"
+            
+            
             - name: Download Artifact
               uses: actions/download-artifact@v2
               with:
