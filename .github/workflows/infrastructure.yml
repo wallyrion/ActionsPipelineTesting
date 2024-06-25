@@ -18,8 +18,6 @@ jobs:
     with:
       workspace: dev
     secrets: inherit
-    outputs:
-      image_tag: ${{ steps.tag_image.outputs.image_tag }}
   
   deploy_dev:
     needs: build_artifacts
