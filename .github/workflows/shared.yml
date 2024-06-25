@@ -60,7 +60,7 @@ jobs:
                 echo "Current workspace for build: ${{ inputs.workspace }}"
 
     deploy_functions:
-        needs: build_project
+        needs: build_functions
         runs-on: ubuntu-latest
         steps:
             - name: 'Checkout Code'
