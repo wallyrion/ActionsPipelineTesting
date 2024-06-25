@@ -36,6 +36,11 @@ jobs:
             - name: 'Current workspace for deploy'
               run: |
                 echo "Current workspace for deploy: ${{ inputs.workspace }}"
+                
+            - name: Download Artifact
+              uses: actions/download-artifact@v2
+              with:
+                name: my-artifact
 
 
     deploy_functions:
