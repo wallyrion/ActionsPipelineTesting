@@ -19,7 +19,4 @@ jobs:
         steps:
             - name: 'Checkout Code'
               uses: actions/checkout@v4
-
-            - name: 'Print Current Workspace'
-              run: echo "Current Terraform Workspace: ${{ inputs.workspace }}"
     
