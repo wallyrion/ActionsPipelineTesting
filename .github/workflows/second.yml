@@ -1,0 +1,41 @@
+name: terraform
+
+on:
+  workflow_run:
+    workflows: [ "terraform" ]
+    types:
+      - completed
+
+permissions:
+  contents: 'read'
+  packages: 'write'
+
+env:
+  twitposter_image: 'ghcr.io/wallyrion/twitposter:latest'
+
+jobs:
+  build_artifacts:
+    name: Build artifacts
+    uses: ./.github/workflows/build.yml
+    with:
+      workspace: dev
+    secrets: inherit
+  
+  deploy_dev:
+    needs: build_artifacts
+    name: Deploy to Dev
+    uses: ./.github/workflows/shared.yml
+    with:
+      environment: dev
+      workspace: dev
+      image_tag: ${{ needs.build_artifacts.outputs.image_tag }}
+    secrets: inherit
+  
+  deploy_prod:
+    needs: deploy_dev
+    name: Deploy to prod
+    uses: ./.github/workflows/shared.yml
+    with:
+        environment: prod
+        workspace: prod
+    secrets: inherit
