@@ -1,4 +1,4 @@
-name: terraform
+name: second
 
 on:
   workflow_run:
